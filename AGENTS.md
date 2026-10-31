@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- All translation calls go through src/lib/api/polyglot.ts (Node/Ollama backend via VITE_POLYGLOT_API_URL); without it the UI shows labelled demo states and never fabricates translations.

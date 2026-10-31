@@ -41,7 +41,7 @@ export function LanguageBar({ source, target, onSource, onTarget }: {
   );
 }
 
-export function IconButton({ label, onClick, disabled, children }: { label: string; onClick: () => void; disabled?: boolean; children: ReactNode }) {
+export function IconButton({ label, onClick, disabled, children }: { label: string; onClick: () => void; disabled?: boolean | undefined; children: ReactNode }) {
   return (
     <button type="button" aria-label={label} title={label} onClick={onClick} disabled={disabled}
       className="grid size-9 place-items-center rounded-lg text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-40">
@@ -62,7 +62,7 @@ export function CopyButton({ text }: { text: string }) {
   );
 }
 
-export function ClearButton({ onClick, disabled }: { onClick: () => void; disabled?: boolean }) {
+export function ClearButton({ onClick, disabled }: { onClick: () => void; disabled?: boolean | undefined }) {
   return <IconButton label="Clear" onClick={onClick} disabled={disabled}><X className="size-4" /></IconButton>;
 }
 

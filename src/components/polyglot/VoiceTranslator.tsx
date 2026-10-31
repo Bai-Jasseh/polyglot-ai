@@ -51,7 +51,7 @@ export function VoiceTranslator({ source, target }: { source: LanguageCode; targ
       const data = new Uint8Array(analyser.frequencyBinCount);
       const tick = () => {
         analyser.getByteFrequencyData(data);
-        setLevels(Array.from({ length: BARS }, (_, i) => Math.max(0.08, data[Math.floor((i / BARS) * data.length)] / 255)));
+        setLevels(Array.from({ length: BARS }, (_, i) => Math.max(0.08, (data[Math.floor((i / BARS) * data.length)] ?? 0) / 255)));
         raf.current = requestAnimationFrame(tick);
       };
       tick();

@@ -14,7 +14,7 @@
  */
 import type { LanguageCode } from "@/lib/languages";
 
-export const API_BASE_URL = (import.meta.env.VITE_POLYGLOT_API_URL as string | undefined)?.replace(/\/$/, "");
+export const API_BASE_URL = (import.meta.env["VITE_POLYGLOT_API_URL"] as string | undefined)?.replace(/\/$/, "");
 export const isBackendConfigured = Boolean(API_BASE_URL);
 
 export class BackendNotConfiguredError extends Error {
@@ -37,7 +37,7 @@ export interface ImageResult { extractedText: string; translation: string }
 
 async function request<T>(path: string, init: RequestInit, signal?: AbortSignal): Promise<T> {
   if (!API_BASE_URL) throw new BackendNotConfiguredError();
-  const res = await fetch(`${API_BASE_URL}${path}`, { ...init, signal });
+  const res = await fetch(`${API_BASE_URL}${path}`, { ...init, signal: signal ?? null });
   if (!res.ok) {
     let message = `Request failed (${res.status})`;
     try {

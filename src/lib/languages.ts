@@ -19,6 +19,6 @@ export const LANGUAGES: Language[] = [
 ];
 
 export const getLanguage = (code: LanguageCode) =>
-  LANGUAGES.find((l) => l.code === code) ?? LANGUAGES[0];
+  LANGUAGES.find((l) => l.code === code) ?? LANGUAGES[0]!;
 
 export const dirFor = (code: LanguageCode) => (getLanguage(code).rtl ? "rtl" : "ltr");
